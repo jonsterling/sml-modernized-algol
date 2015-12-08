@@ -1,0 +1,3 @@
+[submodule "libs/sml-typed-abts"]
+	path = libs/sml-typed-abts
+	url = https://github.com/jonsterling/sml-typed-abts.git
