@@ -1,3 +1,6 @@
 [submodule "libs/sml-typed-abts"]
 	path = libs/sml-typed-abts
 	url = https://github.com/jonsterling/sml-typed-abts.git
+[submodule "libs/cmlib"]
+	path = libs/cmlib
+	url = https://github.com/standardml/cmlib.git

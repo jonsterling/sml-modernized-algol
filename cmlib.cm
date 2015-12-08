@@ -1,0 +1,6 @@
+Library
+  signature ORDERED
+  signature DICT
+  functor SplayDict
+is
+  libs/cmlib/cmlib.cm

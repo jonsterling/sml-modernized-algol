@@ -2,9 +2,13 @@ Group is
   $/basis.cm
   libs/sml-typed-abts/basis/basis.cm
   libs/sml-typed-abts/abt.cm
+  cmlib.cm
 
   src/discrete_eq.fun
 
   src/sort.sml
   src/operator.sml
   src/syntax.sml
+
+  src/statics.sig
+  src/statics.sml
