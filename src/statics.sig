@@ -1,15 +1,14 @@
 signature STATICS =
 sig
-  type vctx
-  type sctx
+  type exp (* expression *)
+  type cmd (* commands *)
+  type typ (* types *)
 
-  type exp
-  type cmd
-  type typ
+  type vctx (* variable contexts *)
+  type sctx (* symbol context *)
 
   val mobile : typ -> bool
 
   val check : vctx * sctx -> exp -> typ
   val checkCmd : vctx * sctx -> cmd -> typ
-
 end

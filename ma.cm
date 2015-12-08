@@ -12,3 +12,6 @@ Group is
 
   src/statics.sig
   src/statics.sml
+
+  src/dynamics.sig
+  src/dynamics.sml

@@ -8,11 +8,12 @@ functor Context (S : SYMBOL) : DICT =
   SplayDict
     (structure Key = SymbolOrdered (S))
 
+
+structure VCtx = Context (Variable)
+structure SCtx = Context (Symbol)
+
 structure Statics : STATICS =
 struct
-  structure VCtx = Context (Variable)
-  structure SCtx = Context (Symbol)
-
   open Abt
 
   type exp = abt
