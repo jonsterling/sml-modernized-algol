@@ -7,3 +7,4 @@ Group is
 
   src/sort.sml
   src/operator.sml
+  src/syntax.sml
