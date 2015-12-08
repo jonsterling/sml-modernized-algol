@@ -12,5 +12,4 @@ sig
 
   val step : exp -> exp step
   val trans : state -> state step
-
 end
