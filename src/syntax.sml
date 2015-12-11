@@ -5,7 +5,7 @@ structure Symbol = Symbol ()
 structure Metacontext =
   Metacontext
     (structure Metavariable = Metavariable
-     type valence = Operator.Arity.Valence.t)
+     structure Valence = Operator.Arity.Valence.Eq)
 
 structure Abt =
   AbtUtil
