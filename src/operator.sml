@@ -40,10 +40,8 @@ struct
   structure S = SortData
   open OperatorData
 
-  structure Arity =
-    Arity
-      (structure Sort = Sort
-       structure Spine = ListSpine)
+  structure Valence = Valence (structure Sort = Sort and Spine = ListSpine)
+  structure Arity = Arity (Valence)
 
   local
     fun K tau = (([], []), tau)
@@ -63,17 +61,13 @@ struct
     | support (SET i) = [(i, S.EXP)]
     | support _ = []
 
-  structure Presheaf =
-  struct
-    type 'i t = 'i t
-    fun map f CMD_TY = CMD_TY
-      | map f NAT = NAT
-      | map f (NUM x) = NUM x
-      | map f CMD = CMD
-      | map f RET = RET
-      | map f BND = BND
-      | map f DCL = DCL
-      | map f (GET u) = GET (f u)
-      | map f (SET u) = SET (f u)
-  end
+  fun map f CMD_TY = CMD_TY
+    | map f NAT = NAT
+    | map f (NUM x) = NUM x
+    | map f CMD = CMD
+    | map f RET = RET
+    | map f BND = BND
+    | map f DCL = DCL
+    | map f (GET u) = GET (f u)
+    | map f (SET u) = SET (f u)
 end

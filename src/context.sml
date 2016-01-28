@@ -1,12 +1,4 @@
-functor SymbolOrdered (S : SYMBOL) : ORDERED =
-struct
-  open S.Eq
-  open S
-end
-
-functor Context (S : SYMBOL) : DICT =
-  SplayDict
-    (structure Key = SymbolOrdered (S))
+functor Context (S : SYMBOL) : DICT = SplayDict (structure Key = S)
 
 
 structure VCtx = Context (Variable)

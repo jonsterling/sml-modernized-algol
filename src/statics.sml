@@ -65,7 +65,7 @@ struct
              let
                val T = SCtx.lookup Sg a
                val T' = check (Gm, Sg) E
-               val true = Abt.Eq.eq (T, T')
+               val true = Abt.eq (T, T')
              in
                T
              end

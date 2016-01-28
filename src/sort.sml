@@ -10,13 +10,9 @@ structure Sort : SORT =
 struct
   open SortData
 
-  structure Eq = DiscreteEq (type t = t)
+  val eq = op=
 
-  structure Show =
-  struct
-    type t = t
-    fun toString TYP = "typ"
-      | toString EXP = "exp"
-      | toString CMD = "cmd"
-  end
+  fun toString TYP = "typ"
+    | toString EXP = "exp"
+    | toString CMD = "cmd"
 end
