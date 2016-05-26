@@ -9,11 +9,9 @@ struct
   type vctx = typ VCtx.dict
   type sctx = typ SCtx.dict
 
-  infix $ \
+  infix $ $$ \
 
-  structure MC = Metacontext
-  structure S = SortData
-  structure O = OperatorData
+  structure S = SortData and O = OperatorData
 
   fun mobile T =
     case #1 (Abt.infer T) of
@@ -29,9 +27,9 @@ struct
              let
                val T = checkCmd (Gm, Sg) M
              in
-               Abt.check MC.empty (O.CMD_TY $ [([], []) \ T], S.TYP)
+               O.CMD_TY $$ [([], []) \ T]
              end
-         | O.NUM n $ [] => Abt.check MC.empty (O.NAT $ [], S.TYP)
+         | O.NUM n $ [] => O.NAT $$ []
          | `x => VCtx.lookup Gm x
          | _ => raise Match
     end
