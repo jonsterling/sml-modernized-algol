@@ -4,6 +4,8 @@ Group is
   libs/sml-typed-abts/abt.cm
   cmlib.cm
 
+  src/ma.lex
+
   src/discrete_eq.fun
 
   src/sort.sml
