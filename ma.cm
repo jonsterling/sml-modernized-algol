@@ -6,6 +6,7 @@ Group is
   cmlib.cm
 
   src/ma.lex
+  src/ma.grm
 
   src/discrete_eq.fun
 
