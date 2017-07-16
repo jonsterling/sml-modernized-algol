@@ -3,5 +3,6 @@ Library
   signature DICT
   functor SplayDict
   structure Pos
+  structure Coord
 is
   libs/cmlib/cmlib.cm
