@@ -2,5 +2,6 @@ Library
   signature ORDERED
   signature DICT
   functor SplayDict
+  structure Pos
 is
   libs/cmlib/cmlib.cm
