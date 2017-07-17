@@ -19,7 +19,7 @@ open Ast
 %nonterm start of ast | exp of ast
 
 %verbose
-%pos int
+%pos (Coord.t -> string)
 %start start
 %eop EOF
 %noshift EOF
