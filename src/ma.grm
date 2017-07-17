@@ -5,7 +5,6 @@ open Ast
 
 %term EOF
    | IDENT of string
-   | BND
    | BIND
    | CMD
    | RET
