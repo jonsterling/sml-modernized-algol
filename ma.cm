@@ -8,6 +8,7 @@ Group is
   src/ma.lex
   src/ma.grm
   src/parser.sml
+  src/ma.sml
 
   src/discrete_eq.fun
 
