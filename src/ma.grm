@@ -1,0 +1,30 @@
+open Ast
+
+%%
+%header (functor MALrValsFun (structure Token : TOKEN))
+
+%term EOF
+   | IDENT of string
+   | BND
+   | CMD
+   | RET
+   | SCOLON
+   | GETS
+   | DCL
+   | IN
+   | LARROW
+   | AT
+
+%nonterm start of ast | exp of ast
+
+%verbose
+%pos int
+%start start
+%eop EOF
+%noshift EOF
+%name MA
+%%
+
+start : exp                                                               (exp)
+
+exp   : IDENT                                                         (` IDENT)
