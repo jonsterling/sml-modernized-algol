@@ -1,4 +1,19 @@
+structure OD = OperatorData
 open Ast
+
+infix $ \
+
+val mkRet = fn e => OD.RET $ [([], []) \ e]
+
+val mkBind = fn (x, exp, cmd) => OD.BND $ [([], []) \ exp, ([], [x]) \ cmd]
+
+val mkDecl = fn (a, exp, cmd) => OD.DCL $ [([], []) \ exp, ([a], []) \ cmd]
+
+val mkGet = fn (a : string) => (OD.GET a) $ []
+
+val mkSet = fn (a : string, exp) => (OD.SET a) $ [([], []) \ exp]
+
+val mkNum = fn x => (OD.NUM x) $ []
 
 %%
 %header (functor MALrValsFun (structure Token : TOKEN))
@@ -15,7 +30,7 @@ open Ast
    | LARROW
    | AT
 
-%nonterm start of ast | exp of ast
+%nonterm start of ast | exp of ast | cmd of ast
 
 %verbose
 %pos (Coord.t -> string)
@@ -28,3 +43,9 @@ open Ast
 start : exp                                                               (exp)
 
 exp   : IDENT                                                         (` IDENT)
+
+cmd   : RET exp                                                     (mkRet exp)
+      | BIND IDENT LARROW exp SCOLON cmd             (mkBind (IDENT, exp, cmd))
+      | DECL IDENT GETS   exp IN     cmd             (mkDecl (IDENT, exp, cmd))
+      | AT IDENT                                                  (mkGet IDENT)
+      | IDENT GETS exp                                     (mkSet (IDENT, exp))
