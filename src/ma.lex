@@ -47,6 +47,6 @@ whitespace = [\ \t];
 "in"              => (Tokens.IN     (posTuple (size yytext)));
 "@"               => (Tokens.AT     (posTuple (size yytext)));
 
-{digit}{digit}+   => (Tokens.NUM    (posTupleWith (size yytext) (valOf (Int.fromString yytext))));
+{digit}{digit}*   => (Tokens.NUM    (posTupleWith (size yytext) (valOf (Int.fromString yytext))));
 
 {alpha}{any}*     => (Tokens.IDENT  (posTupleWith (size yytext) yytext));
