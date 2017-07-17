@@ -9,6 +9,7 @@ val mkDecl = fn (a, exp, cmd) => OD.DCL $ [([], []) \ exp, ([a], []) \ cmd]
 val mkGet  = fn (a : string) => (OD.GET a) $ []
 val mkSet  = fn (a : string, exp) => (OD.SET a) $ [([], []) \ exp]
 val mkNum  = fn x => (OD.NUM x) $ []
+val mkCmd  = fn cmd => OD.CMD $ [([], []) \ cmd]
 
 %%
 %header (functor MALrValsFun (structure Token : TOKEN))
@@ -41,6 +42,7 @@ start : cmd                                                               (cmd)
 
 exp   : IDENT                                                         (` IDENT)
       | NUM                                                         (mkNum NUM)
+      | CMD cmd                                                     (mkCmd cmd)
 
 cmd   : RET exp                                                     (mkRet exp)
       | BIND IDENT LARROW exp SCOLON cmd             (mkBind (IDENT, exp, cmd))
