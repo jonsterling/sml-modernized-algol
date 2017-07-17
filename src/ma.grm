@@ -34,6 +34,7 @@ val mkNum  = fn x => (OD.NUM x) $ []
 %eop EOF
 %noshift EOF
 %name MA
+%arg (fileName) : string
 %%
 
 start : exp                                                               (exp)
