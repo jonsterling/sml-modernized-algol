@@ -38,9 +38,9 @@ struct
           (let
               val lexer =
                 MAParser.makeLexer (stringreader (Option.valOf input)) "stdin"
-              val result = MAParser.parse (1, lexer, error "-", "-")
+              val (result, _) = MAParser.parse (1, lexer, error "-", "-")
             in
-              (printLn "Successfully parsed"; 0)
+              (printLn (Ast.toString result); 0)
             end
             handle
               ParseError (p, s) => (printLn ("Error: " ^ Pos.toString p); 1)
