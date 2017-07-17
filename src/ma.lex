@@ -40,7 +40,7 @@ whitespace = [\ \t];
 "cmd"             => (Tokens.CMD    (posTuple (size yytext)));
 "ret"             => (Tokens.RET    (posTuple (size yytext)));
 "bnd"             => (Tokens.BIND   (posTuple (size yytext)));
-"dcl"             => (Tokens.DCL    (posTuple (size yytext)));
+"dcl"             => (Tokens.DECL   (posTuple (size yytext)));
 ";"               => (Tokens.SCOLON (posTuple (size yytext)));
 "<-"              => (Tokens.LARROW (posTuple (size yytext)));
 ":="              => (Tokens.GETS   (posTuple (size yytext)));
