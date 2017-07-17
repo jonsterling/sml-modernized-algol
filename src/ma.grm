@@ -15,6 +15,7 @@ val mkNum  = fn x => (OD.NUM x) $ []
 
 %term EOF
    | IDENT of string
+   | NUM of Int.int
    | BIND
    | CMD
    | RET
@@ -38,6 +39,7 @@ val mkNum  = fn x => (OD.NUM x) $ []
 start : exp                                                               (exp)
 
 exp   : IDENT                                                         (` IDENT)
+      | NUM                                                         (mkNum NUM)
 
 cmd   : RET exp                                                     (mkRet exp)
       | BIND IDENT LARROW exp SCOLON cmd             (mkBind (IDENT, exp, cmd))
