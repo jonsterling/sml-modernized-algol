@@ -9,4 +9,9 @@ structure Abt =
       structure Variable = Variable
       structure Symbol = Symbol)
 
+structure Ast =
+  Ast
+    (structure Operator = Operator
+     structure Metavariable = Metavariable)
+
 structure ShowAbt = PlainShowAbt (Abt)
