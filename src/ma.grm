@@ -37,7 +37,7 @@ val mkNum  = fn x => (OD.NUM x) $ []
 %arg (fileName) : string
 %%
 
-start : exp                                                               (exp)
+start : cmd                                                               (cmd)
 
 exp   : IDENT                                                         (` IDENT)
       | NUM                                                         (mkNum NUM)
