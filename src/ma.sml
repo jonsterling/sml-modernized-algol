@@ -35,15 +35,18 @@ struct
       case input of
         NONE => 1
       | SOME str =>
-          ((let
+          (let
               val lexer =
                 MAParser.makeLexer (stringreader (Option.valOf input)) "stdin"
               val result = MAParser.parse (1, lexer, error "-", "-")
             in
-              printLn "Successfully parsed"
+              (printLn "Successfully parsed"; 0)
             end
-            handle ParseError (p, s) =>
-              printLn ("Error: " ^ Pos.toString p)); 0)
+            handle
+              ParseError (p, s) => (printLn ("Error: " ^ Pos.toString p); 1)
+            | _ => (printLn "Unknown error."; 1))
     end
+
+  val _ = SMLofNJ.exportFn ("ma", main)
 
 end
