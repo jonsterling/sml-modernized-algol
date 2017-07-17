@@ -29,7 +29,7 @@ val mkNum  = fn x => (OD.NUM x) $ []
 %nonterm start of ast | exp of ast | cmd of ast
 
 %verbose
-%pos (Coord.t -> string)
+%pos (string -> Coord.t)
 %start start
 %eop EOF
 %noshift EOF
