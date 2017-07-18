@@ -41,7 +41,7 @@ val mkCmd  = fn cmd => OD.CMD $ [([], []) \ cmd]
 %arg (fileName) : string
 %%
 
-start : cmd                                                               (cmd)
+start : exp                                                               (exp)
 
 exp   : IDENT                                                         (` IDENT)
       | NUM                                                         (mkNum NUM)
