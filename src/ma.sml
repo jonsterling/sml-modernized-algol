@@ -8,8 +8,8 @@ struct
     in
       fn n =>
         let
-          val m = min(n, !remainder)
-          val s = String.substring(s, !pos, m)
+          val m  = min (n, !remainder)
+          val s  = String.substring (s, !pos, m)
           val () = pos := !pos + m
           val () = remainder := !remainder - m
         in
@@ -30,21 +30,18 @@ struct
 
   fun main (name, args) =
     let
-      val input = (TextIO.inputLine TextIO.stdIn)
+      val input : TextIO.vector = TextIO.input TextIO.stdIn
     in
-      case input of
-        NONE => 1
-      | SOME str =>
-          (let
-              val lexer =
-                MAParser.makeLexer (stringreader (Option.valOf input)) "stdin"
-              val (result, _) = MAParser.parse (1, lexer, error "-", "-")
-            in
-              (printLn (Ast.toString result); 0)
-            end
-            handle
-              ParseError (p, s) => (printLn ("Error: " ^ Pos.toString p); 1)
-            | _ => (printLn "Unknown error."; 1))
+      let
+        val lexer =
+          MAParser.makeLexer (stringreader input) "stdin"
+        val (result, _) = MAParser.parse (1, lexer, error "-", "-")
+      in
+        (printLn (Ast.toString result); 0)
+      end
+      handle
+        ParseError (p, s) => (printLn ("Error: " ^ Pos.toString p); 1)
+      | _ => (printLn "Unknown error."; 1)
     end
 
   val _ = SMLofNJ.exportFn ("ma", main)
