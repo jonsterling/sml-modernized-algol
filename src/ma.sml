@@ -1,5 +1,9 @@
 structure MA =
 struct
+  structure SD  = SortData
+  structure ATA = AstToAbt
+  structure SA  = ShowAbt
+
   fun stringreader s =
     let
       val pos = ref 0
@@ -30,14 +34,13 @@ struct
 
   fun main (name, args) =
     let
-      val input : TextIO.vector = TextIO.input TextIO.stdIn
+      val input = TextIO.input TextIO.stdIn
     in
       let
-        val lexer =
-          MAParser.makeLexer (stringreader input) "stdin"
+        val lexer = MAParser.makeLexer (stringreader input) "-"
         val (result, _) = MAParser.parse (1, lexer, error "-", "-")
-        val emptymctx  = Abt.Metavariable.Ctx.empty
-        val out = ShowAbt.toString (AstToAbt.convert emptymctx (result, SortData.EXP))
+        val mctx  = Abt.Metavariable.Ctx.empty
+        val out = SA.toString (ATA.convert mctx (result, SD.EXP))
       in
         (printLn out; 0)
       end
@@ -47,5 +50,4 @@ struct
     end
 
   val _ = SMLofNJ.exportFn ("ma", main)
-
 end
