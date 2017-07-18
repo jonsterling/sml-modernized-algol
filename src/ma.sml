@@ -36,8 +36,10 @@ struct
         val lexer =
           MAParser.makeLexer (stringreader input) "stdin"
         val (result, _) = MAParser.parse (1, lexer, error "-", "-")
+        val emptymctx  = Abt.Metavariable.Ctx.empty
+        val out = ShowAbt.toString (AstToAbt.convert emptymctx (result, SortData.EXP))
       in
-        (printLn (Ast.toString result); 0)
+        (printLn out; 0)
       end
       handle
         ParseError (p, s) => (printLn ("Error: " ^ Pos.toString p); 1)

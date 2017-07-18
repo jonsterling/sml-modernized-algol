@@ -14,4 +14,6 @@ structure Ast =
     (structure Operator = Operator
      structure Metavariable = Metavariable)
 
-structure ShowAbt = PlainShowAbt (Abt)
+structure ShowAbt = DebugShowAbt (Abt)
+
+structure AstToAbt = AstToAbt (structure Abt = Abt and Ast = Ast)
