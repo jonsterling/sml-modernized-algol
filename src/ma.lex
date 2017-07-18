@@ -46,6 +46,8 @@ whitespace = [\ \t];
 ":="              => (Tokens.GETS   (posTuple (size yytext)));
 "in"              => (Tokens.IN     (posTuple (size yytext)));
 "@"               => (Tokens.AT     (posTuple (size yytext)));
+"{"               => (Tokens.LCURLY (posTuple (size yytext)));
+"}"               => (Tokens.RCURLY (posTuple (size yytext)));
 
 {digit}{digit}*   => (Tokens.NUM    (posTupleWith (size yytext) (valOf (Int.fromString yytext))));
 
