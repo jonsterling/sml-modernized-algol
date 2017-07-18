@@ -26,6 +26,7 @@ val mkCmd  = fn cmd => OD.CMD $ [([], []) \ cmd]
    | IN
    | LARROW
    | AT
+   | DO
    | LCURLY
    | RCURLY
 
@@ -51,5 +52,6 @@ cmd   : RET exp                                                     (mkRet exp)
       | DECL IDENT GETS   exp IN     cmd             (mkDecl (IDENT, exp, cmd))
       | AT IDENT                                                  (mkGet IDENT)
       | IDENT GETS exp                                     (mkSet (IDENT, exp))
+      | DO exp                           (mkBind ("x", exp, mkRet (` "x")))
       | LCURLY IDENT LARROW cmd SCOLON cmd RCURLY
                                              (mkBind (IDENT, mkCmd cmd1, cmd2))

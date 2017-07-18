@@ -48,6 +48,7 @@ whitespace = [\ \t];
 "@"               => (Tokens.AT     (posTuple (size yytext)));
 "{"               => (Tokens.LCURLY (posTuple (size yytext)));
 "}"               => (Tokens.RCURLY (posTuple (size yytext)));
+"do"              => (Tokens.DO     (posTuple (size yytext)));
 
 {digit}{digit}*   => (Tokens.NUM    (posTupleWith (size yytext) (valOf (Int.fromString yytext))));
 
