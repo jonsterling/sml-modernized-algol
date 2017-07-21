@@ -1,8 +1,14 @@
 Group is
   $/basis.cm
+  $/ml-yacc-lib.cm
   libs/sml-typed-abts/basis/basis.cm
   libs/sml-typed-abts/abt.cm
   cmlib.cm
+
+  src/ma.lex
+  src/ma.grm
+  src/parser.sml
+  src/ma.sml
 
   src/discrete_eq.fun
 

@@ -1,1 +1,6 @@
 .cm
+ma.lex.sml
+ma.grm.desc
+ma.grm.sig
+ma.grm.sml
+ma.x86-darwin
